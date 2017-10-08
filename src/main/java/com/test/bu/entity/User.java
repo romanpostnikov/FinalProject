@@ -11,7 +11,7 @@ public class User {
     private String username;
     private String password;
 
-    public enum Role {USER, ADMIN;}
+    public enum role {USER, ADMIN;}
 
     public String getUsername() {
         return username;
