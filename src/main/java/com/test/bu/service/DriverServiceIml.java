@@ -39,7 +39,11 @@ public class DriverServiceIml implements DriverService {
     }
 
     @Override
-    public void delete(Driver entity) {
-        driverDao.delete(entity);
+    public void delete(int id) {
+        driverDao.delete(driverDao.getById(id));
+    }
+
+    @Override
+    public void delete(String id) {
     }
 }

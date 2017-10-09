@@ -13,5 +13,7 @@ public interface InterfaceService<T> {
 
     void update(T entity);
 
-    void delete(T entity);
+    void delete(int id);
+
+    void delete(String id);
 }

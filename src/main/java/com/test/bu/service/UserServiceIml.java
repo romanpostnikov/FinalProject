@@ -39,7 +39,10 @@ public class UserServiceIml implements UserService {
     }
 
     @Override
-    public void delete(User entity) {
-        userDao.delete(entity);
+    public void delete(int id) {}
+
+    @Override
+    public void delete(String id) {
+        userDao.delete(userDao.getById(id));
     }
 }

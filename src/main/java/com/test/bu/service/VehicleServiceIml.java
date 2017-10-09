@@ -39,7 +39,11 @@ public class VehicleServiceIml implements VehicleService {
     }
 
     @Override
-    public void delete(Vehicle entity) {
-        vehicleDao.delete(entity);
+    public void delete(int id) {
+        vehicleDao.delete(vehicleDao.getById(id));
+    }
+
+    @Override
+    public void delete(String id) {
     }
 }

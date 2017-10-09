@@ -39,7 +39,11 @@ public class FuelServiceIml implements FuelService {
     }
 
     @Override
-    public void delete(Fuel entity) {
-        fuelDao.delete(entity);
+    public void delete(int id) {
+    }
+
+    @Override
+    public void delete(String id) {
+        fuelDao.delete(fuelDao.getById(id));
     }
 }

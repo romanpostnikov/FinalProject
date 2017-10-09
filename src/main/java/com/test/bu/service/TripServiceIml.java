@@ -39,7 +39,11 @@ public class TripServiceIml implements TripService {
     }
 
     @Override
-    public void delete(Trip entity) {
-        tripDao.delete(entity);
+    public void delete(int id) {
+        tripDao.delete(tripDao.getById(id));
+    }
+
+    @Override
+    public void delete(String id) {
     }
 }
