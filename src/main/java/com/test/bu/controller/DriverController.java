@@ -17,9 +17,9 @@ public class DriverController {
     public String getById(@PathVariable("id") int id, @RequestParam(value = "edit", required = false) boolean edit, Model model) {
         model.addAttribute("driverList", driverService.getById(id));
         if (edit) {
-            return "editDriver";
+            return "driverEdit";
         } else {
-            return "showDriver";
+            return "driverShow";
         }
     }
 
@@ -31,7 +31,7 @@ public class DriverController {
 
     @GetMapping("/create")
     public String createPage() {
-        return "createDriverForm";
+        return "driverCreateForm";
     }
 
     @PostMapping("/create")

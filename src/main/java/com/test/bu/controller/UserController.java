@@ -17,9 +17,9 @@ public class UserController {
     public String getById(@PathVariable("id") int id, @RequestParam(value = "edit", required = false) boolean edit, Model model) {
         model.addAttribute("userList", userService.getById(id));
         if (edit) {
-            return "editUser";
+            return "userEdit";
         } else {
-            return "showUser";
+            return "userShow";
         }
     }
 
@@ -31,7 +31,7 @@ public class UserController {
 
     @GetMapping("/create")
     public String createPage() {
-        return "createUserForm";
+        return "userCreateForm";
     }
 
     @PostMapping("/create")

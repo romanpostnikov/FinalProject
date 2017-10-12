@@ -1,8 +1,6 @@
 package com.test.bu.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
@@ -10,8 +8,10 @@ public class User {
     @Id
     private String username;
     private String password;
+    @Enumerated(EnumType.ORDINAL)
+    private Role role;
+    private enum Role {USER, ADMIN;}
 
-    public enum role {USER, ADMIN;}
 
     public String getUsername() {
         return username;

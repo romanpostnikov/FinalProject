@@ -8,7 +8,7 @@ import javax.persistence.Table;
 @Table(name = "fuel")
 public class Fuel {
     @Id
-    public String fuelType;
+    private String fuelType;
     private int cost;
 
     public String getFuelType() {

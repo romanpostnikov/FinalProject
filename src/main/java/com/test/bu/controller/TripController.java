@@ -17,9 +17,9 @@ public class TripController {
     public String getById(@PathVariable("id") int id, @RequestParam(value = "edit", required = false) boolean edit, Model model) {
         model.addAttribute("tripList", tripService.getById(id));
         if (edit) {
-            return "editTrip";
+            return "tripEdit";
         } else {
-            return "showTrip";
+            return "tripShow";
         }
     }
 
@@ -31,7 +31,7 @@ public class TripController {
 
     @GetMapping("/create")
     public String createPage() {
-        return "createTripForm";
+        return "tripCreateForm";
     }
 
     @PostMapping("/create")

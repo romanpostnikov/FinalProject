@@ -1,6 +1,6 @@
 package com.test.bu.config;
 
-import org.springframework.security.access.SecurityConfig;
+import com.test.bu.config.security.SecurityConfig;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;

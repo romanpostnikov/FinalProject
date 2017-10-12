@@ -10,21 +10,20 @@ public class Vehicle {
     private int id;
     private String brand;
     private String model;
-    @OneToOne(fetch = FetchType.EAGER, targetEntity = Fuel.class)
+    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Fuel.class)
     private Fuel fuel;
     private int year;
     private double consumption;
-
-    public enum rank {
+    private boolean status;
+    private Rank rank;
+    private enum Rank {
         A(1), B(2), C(3);
         private final int rankNum;
 
-        rank(int rankNum) {
+        Rank(int rankNum) {
             this.rankNum = rankNum;
         }
     }
-
-    public enum status {FREE, BUSY;}
 
     public int getId() {
         return id;
@@ -72,5 +71,13 @@ public class Vehicle {
 
     public void setConsumption(double consumption) {
         this.consumption = consumption;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

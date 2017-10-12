@@ -17,9 +17,9 @@ public class FuelController {
     public String getById(@PathVariable("id") int id, @RequestParam(value = "edit", required = false) boolean edit, Model model) {
         model.addAttribute("fuelList", fuelService.getById(id));
         if (edit) {
-            return "editFuel";
+            return "fuelEdit";
         } else {
-            return "showFuel";
+            return "fuelShow";
         }
     }
 
@@ -31,7 +31,7 @@ public class FuelController {
 
     @GetMapping("/create")
     public String createPage() {
-        return "createFuelForm";
+        return "fuelCreateForm";
     }
 
     @PostMapping("/create")

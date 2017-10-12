@@ -17,9 +17,9 @@ public class VehicleController {
     public String getById(@PathVariable("id") int id, @RequestParam(value = "edit", required = false) boolean edit, Model model) {
         model.addAttribute("vehicleList", vehicleService.getById(id));
         if (edit) {
-            return "editVehicle";
+            return "vehicleEdit";
         } else {
-            return "showVehicle";
+            return "vehicleShow";
         }
     }
 
@@ -31,7 +31,7 @@ public class VehicleController {
 
     @GetMapping("/create")
     public String createPage() {
-        return "createVehicleForm";
+        return "vehicleCreateForm";
     }
 
     @PostMapping("/create")

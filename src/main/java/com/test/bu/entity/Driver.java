@@ -13,8 +13,7 @@ public class Driver {
     private String surname;
     private Date dob;
     private String email;
-
-    public enum status {FREE, BUSY;}
+    private boolean status;
 
 
     public int getId() {
@@ -55,5 +54,13 @@ public class Driver {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }
