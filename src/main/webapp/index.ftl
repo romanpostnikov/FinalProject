@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hello</title>
+    <title>Taxi database</title>
 <#assign security=JspTaglibs["http://www.springframework.org/security/tags"] />
 </head>
 <body class="container">
@@ -10,7 +10,7 @@
 <div class="container">
 
 <@security.authorize access="isAuthenticated()">
-    <h1>Hello, <@security.authentication property="principal.username"/></h1>
+    <p>Hello, <@security.authentication property="principal.username"/></p>
 </@security.authorize>
 
 </div>

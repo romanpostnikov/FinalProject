@@ -8,10 +8,15 @@ public class User {
     @Id
     private String username;
     private String password;
-    @Enumerated(EnumType.ORDINAL)
-    private Role role;
-    private enum Role {USER, ADMIN;}
+    private String role;
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public String getUsername() {
         return username;

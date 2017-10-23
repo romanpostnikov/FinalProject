@@ -1,20 +1,26 @@
 package com.test.bu.entity;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.io.Serializable;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "driver")
-public class Driver {
+public class Driver implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private String surname;
-    private Date dob;
+    @Column(nullable = false)
+    private LocalDate dob;
     private String email;
+    @Column(nullable = false)
     private boolean status;
 
+    public Driver(){
+
+    }
 
     public int getId() {
         return id;
@@ -40,11 +46,11 @@ public class Driver {
         this.surname = surname;
     }
 
-    public Date getDob() {
+    public LocalDate getDob() {
         return dob;
     }
 
-    public void setDob(Date dob) {
+    public void setDob(LocalDate dob) {
         this.dob = dob;
     }
 
@@ -62,5 +68,17 @@ public class Driver {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Driver{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", dob=" + dob + '\'' +
+                ", email='" + email + '\'' +
+                ", status=" + status +
+                '}';
     }
 }

@@ -6,8 +6,9 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<#import "/spring.ftl" as spring/>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-static-top">
     <div class="container-fluid">
         <div class="navbar-header">
             <a class="navbar-brand" href="/">Main</a>

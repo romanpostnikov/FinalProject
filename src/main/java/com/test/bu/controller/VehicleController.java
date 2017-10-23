@@ -2,20 +2,30 @@ package com.test.bu.controller;
 
 import com.test.bu.entity.Vehicle;
 import com.test.bu.service.interfaces.VehicleService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @Controller
 @RequestMapping("/vehicle")
 public class VehicleController {
+
+    private static final Logger logger = Logger.getLogger(VehicleController.class);
+
     @Autowired
-    VehicleService vehicleService;
+    private VehicleService vehicleService;
 
     @GetMapping("/{id}")
     public String getById(@PathVariable("id") int id, @RequestParam(value = "edit", required = false) boolean edit, Model model) {
-        model.addAttribute("vehicleList", vehicleService.getById(id));
+        model.addAttribute("vehicle", vehicleService.findById(id));
         if (edit) {
             return "vehicleEdit";
         } else {
@@ -24,8 +34,29 @@ public class VehicleController {
     }
 
     @GetMapping("/all")
-    public String getAll(Model model) {
-        model.addAttribute("vehicleList", vehicleService.getAll());
+    public String getAll(Model model,
+                         @RequestParam(value = "page", required = false) Integer page,
+                         @RequestParam(value = "size", required = false) Integer size,
+                         @RequestParam(value = "order", required = false) String order) {
+        int totalPages = 0;
+        if (page != null) {
+            size = 10;
+            Page<Vehicle> pages = vehicleService.findAll(page, size, order);
+            totalPages = pages.getTotalPages();
+            model.addAttribute("total", totalPages);
+            model.addAttribute("users", pages.getContent());
+        } else if (!StringUtils.isEmpty(order)) {
+            model.addAttribute("vehicle", vehicleService.findAll(0, 100, order).getContent());
+        } else {
+            Collection<Vehicle> all = vehicleService.findAll();
+            model.addAttribute("vehicle", all);
+            totalPages = all.size() / 2;
+        }
+        List<Integer> pagesCount = new ArrayList<>();
+        for (int i = 0; i < totalPages; i++) {
+            pagesCount.add(i);
+        }
+        model.addAttribute("pages", pagesCount);
         return "vehicleList";
     }
 
@@ -42,7 +73,7 @@ public class VehicleController {
 
     @PostMapping("/update")
     public String update(@ModelAttribute Vehicle vehicle) {
-        vehicleService.update(vehicle);
+        vehicleService.save(vehicle);
         return "redirect:" + vehicle.getId() + "?edit=false";
     }
 

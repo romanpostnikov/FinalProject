@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>UserData</title>
+    <title>Error page</title>
 </head>
 <body class="container">
-
-<h1>An error occured</h1>
+<#include "header.ftl">
+<p>An error occured</p>
 
 </body>
 </html>

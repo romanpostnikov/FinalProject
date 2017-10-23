@@ -1,19 +1,13 @@
 package com.test.bu.service.interfaces;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface InterfaceService<T> {
-    void save(T entity);
+    T save(T entity);
 
-    T getById(int id);
+    T findById(int id);
 
-    T getById(String id);
-
-    List<T> getAll();
-
-    void update(T entity);
+    Collection<T> findAll();
 
     void delete(int id);
-
-    void delete(String id);
 }

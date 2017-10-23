@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>UserData</title>
+    <title>LoginPage</title>
 </head>
-<body class="container">
 
+<body class="container">
+<#include "header.ftl">
 <form action="/loginPage" method="post" class="form-group">
     Name
     <input title="Name" type="text" name="username" "/>

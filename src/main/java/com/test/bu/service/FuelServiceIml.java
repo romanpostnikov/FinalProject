@@ -1,7 +1,8 @@
 package com.test.bu.service;
 
-import com.test.bu.dao.interfaces.FuelDao;
+import com.test.bu.dao.FuelDao;
 import com.test.bu.entity.Fuel;
+import org.apache.log4j.Logger;
 import com.test.bu.service.interfaces.FuelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,40 +11,39 @@ import java.util.List;
 
 @Service
 public class FuelServiceIml implements FuelService {
+
+    private final static Logger logger = Logger.getLogger(FuelServiceIml.class);
     @Autowired
     FuelDao fuelDao;
 
     @Override
-    public void save(Fuel entity) {
-        fuelDao.save(entity);
+    public Fuel save(Fuel fuel) {
+        fuelDao.save(fuel);
+        return fuel;
     }
 
     @Override
-    public Fuel getById(int id) {
+    public Fuel findByFuelType(String fuelType) {
+        return fuelDao.findByFuelType(fuelType);
+    }
+
+    @Override
+    public List<Fuel> findAll() {
+        return fuelDao.findAll();
+    }
+
+    @Override
+    public void delete(String fuelType) {
+        fuelDao.delete(fuelDao.findByFuelType(fuelType));
+    }
+
+    @Override
+    public Fuel findById(int id) {
         return null;
     }
 
     @Override
-    public Fuel getById(String id) {
-        return fuelDao.getById(id);
-    }
-
-    @Override
-    public List<Fuel> getAll() {
-        return fuelDao.getAll();
-    }
-
-    @Override
-    public void update(Fuel entity) {
-        fuelDao.update(entity);
-    }
-
-    @Override
     public void delete(int id) {
-    }
 
-    @Override
-    public void delete(String id) {
-        fuelDao.delete(fuelDao.getById(id));
     }
 }
