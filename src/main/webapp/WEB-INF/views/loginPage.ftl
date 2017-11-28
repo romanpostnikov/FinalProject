@@ -8,11 +8,18 @@
 <body class="container">
 <#include "header.ftl">
 <form action="/loginPage" method="post" class="form-group">
-    Name
-    <input title="Name" type="text" name="username" "/>
-    Password
-    <input title="Password" type="password" name="password" "/>
+
+    <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" class="form-control" placeholder="Enter username" name="username" required>
+    </div>
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" class="form-control" placeholder="Enter password" name="password" required>
+    </div>
+
     <input type="submit" value="Login"/>
+
 </form>
 </body>
 </html>

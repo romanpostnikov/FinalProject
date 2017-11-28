@@ -53,6 +53,6 @@ public class FuelController {
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") String id) {
         fuelService.delete(id);
-        return "redirect:all";
+        return "redirect:/all";
     }
 }

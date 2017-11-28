@@ -9,10 +9,4 @@ public interface TripDao extends JpaRepository<Trip, Integer>{
     Trip findById(int id);
 
     Page<Trip> findAll(Pageable pageable);
-
-    @Override
-    void delete(Trip trip);
-
-    @Override
-    Trip save(Trip trip);
 }

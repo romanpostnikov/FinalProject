@@ -3,6 +3,7 @@ package com.test.bu.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Table(name = "driver")
@@ -12,8 +13,6 @@ public class Driver implements Serializable{
     private int id;
     private String name;
     private String surname;
-    @Column(nullable = false)
-    private LocalDate dob;
     private String email;
     @Column(nullable = false)
     private boolean status;
@@ -21,7 +20,6 @@ public class Driver implements Serializable{
     public Driver(){
 
     }
-
     public int getId() {
         return id;
     }
@@ -46,14 +44,6 @@ public class Driver implements Serializable{
         this.surname = surname;
     }
 
-    public LocalDate getDob() {
-        return dob;
-    }
-
-    public void setDob(LocalDate dob) {
-        this.dob = dob;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -70,7 +60,7 @@ public class Driver implements Serializable{
         this.status = status;
     }
 
-    @Override
+   /* @Override
     public String toString() {
         return "Driver{" +
                 "id=" + id +
@@ -80,5 +70,5 @@ public class Driver implements Serializable{
                 ", email='" + email + '\'' +
                 ", status=" + status +
                 '}';
-    }
+    }*/
 }

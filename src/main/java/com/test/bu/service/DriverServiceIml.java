@@ -25,9 +25,8 @@ public class DriverServiceIml implements DriverService {
     DriverDao driverDao;
 
     @Override
-    public Driver save(Driver driver) {
+    public void save(Driver driver) {
         driverDao.save(driver);
-        return driver;
     }
 
     @Override

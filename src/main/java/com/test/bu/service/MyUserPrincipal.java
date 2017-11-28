@@ -39,7 +39,7 @@ public class MyUserPrincipal implements UserDetails {
         List<SimpleGrantedAuthority> auths = new ArrayList<>();
         Collection<User> users = userService.findAll();
         for (User user : users) {
-            auths.add(new SimpleGrantedAuthority(user.getUsername()));
+            auths.add(new SimpleGrantedAuthority(user.getRole()));
         }
         return auths;
     }

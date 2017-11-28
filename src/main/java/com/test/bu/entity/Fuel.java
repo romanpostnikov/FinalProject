@@ -9,7 +9,7 @@ import javax.persistence.Table;
 public class Fuel {
     @Id
     private String fuelType;
-    private int cost;
+    private double cost;
 
     public String getFuelType() {
         return fuelType;
@@ -19,11 +19,11 @@ public class Fuel {
         this.fuelType = fuelType;
     }
 
-    public int getCost() {
+    public double getCost() {
         return cost;
     }
 
-    public void setCost(int cost) {
+    public void setCost(double cost) {
         this.cost = cost;
     }
 }

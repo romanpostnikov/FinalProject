@@ -20,9 +20,8 @@ public class UserServiceIml implements UserService {
     UserDao userDao;
 
     @Override
-    public User save(User user) {
+    public void save(User user) {
         userDao.save(user);
-        return user;
     }
 
     public User findByUsername(String username) {

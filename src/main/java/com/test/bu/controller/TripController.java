@@ -80,6 +80,6 @@ public class TripController {
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") int id) {
         tripService.delete(id);
-        return "redirect:all";
+        return "redirect:/all";
     }
 }

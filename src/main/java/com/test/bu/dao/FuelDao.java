@@ -9,10 +9,4 @@ public interface FuelDao extends JpaRepository<Fuel, Integer> {
     Fuel findByFuelType(String fuelType);
 
     List<Fuel> findAll();
-
-    @Override
-    void delete(Fuel fuel);
-
-    @Override
-    Fuel save(Fuel fuel);
 }

@@ -14,11 +14,11 @@
             <a class="navbar-brand" href="/">Main</a>
         </div>
         <ul class="nav navbar-nav navbar-left">
-            <li class=""><a href="/user/all">User</a></li>
             <li class=""><a href="/driver/all">Driver</a></li>
             <li class=""><a href="/vehicle/all">Vehicle</a></li>
-            <li class=""><a href="/trip/all">Trip</a></li>
             <li class=""><a href="/fuel/all">Fuel</a></li>
+            <li class=""><a href="/trip/all">Trip</a></li>
+            <li class=""><a href="/user/all">User</a></li>
         </ul>
     </div>
 </nav>

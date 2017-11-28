@@ -24,9 +24,8 @@ public class VehicleServiceIml implements VehicleService {
     VehicleDao vehicleDao;
 
     @Override
-    public Vehicle save(Vehicle vehicle) {
+    public void save(Vehicle vehicle) {
         vehicleDao.save(vehicle);
-        return vehicle;
     }
 
     @Override

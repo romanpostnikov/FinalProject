@@ -9,10 +9,4 @@ public interface UserDao extends JpaRepository<User, Integer>{
     User findByUsername(String username);
 
     List<User> findAll();
-
-    @Override
-    void delete(User user);
-
-    @Override
-    User save(User user);
 }

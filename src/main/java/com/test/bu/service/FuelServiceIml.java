@@ -17,9 +17,8 @@ public class FuelServiceIml implements FuelService {
     FuelDao fuelDao;
 
     @Override
-    public Fuel save(Fuel fuel) {
+    public void save(Fuel fuel) {
         fuelDao.save(fuel);
-        return fuel;
     }
 
     @Override

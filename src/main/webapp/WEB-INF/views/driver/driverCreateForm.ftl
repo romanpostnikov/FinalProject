@@ -5,29 +5,31 @@
     <title>Create driver</title>
 </head>
 <body class="container">
-<#include "*/header.ftl">
+<#include "*/header.ftl" >
 
-<#if errors??>
-ERROR:
-    <#list errors as error>
-    <h1>error</h1><br>
-    </#list>
-</#if>
+<div class="container">
+    <form action="create" method="post" name="driver" class="form-group">
 
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" placeholder="Enter name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="surname">Surname:</label>
+            <input type="text" class="form-control" placeholder="Enter surname" name="surname" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" placeholder="Enter email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="status">Free:</label>
+            <input type="checkbox" class="form-control" placeholder="Check if driver is not busy" name="status">
+        </div>
+        <input type="submit" value="create"/>
+    </form>
+</div>
+<a type="button" href="/driver/all" class="button">Back</a>
 
-<form action="create" method="post" name="driver" class="form-group">
-    Name
-    <input title="Name" type="text" name="name" "/>
-    Surname
-    <input title="Surname" type="text" name="surname" "/>
-    Date of birth
-    <input title="Dob" type="date" name="dob"/>
-    Email
-    <input title="Email" type="text" name="email" "/>
-    Status
-    <input title="Status" type="checkbox" name="status" "/>
-    <input type="submit" value="Create"/>
-</form>
-<a type="button" href="/all" class="button">Back</a>
 </body>
 </html>

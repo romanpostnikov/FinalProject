@@ -9,10 +9,4 @@ public interface VehicleDao extends JpaRepository<Vehicle, Integer>{
     Vehicle findById(int id);
 
     Page<Vehicle> findAll(Pageable pageable);
-
-    @Override
-    void delete(Vehicle vehicle);
-
-    @Override
-    Vehicle save(Vehicle vehicle);
 }

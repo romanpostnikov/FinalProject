@@ -9,10 +9,4 @@ public interface DriverDao extends JpaRepository<Driver, Integer> {
     Driver findById(int id);
 
     Page<Driver> findAll(Pageable pageable);
-
-    @Override
-    void delete(Driver driver);
-
-    @Override
-    Driver save(Driver driver);
 }

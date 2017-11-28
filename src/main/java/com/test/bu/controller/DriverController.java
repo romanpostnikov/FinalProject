@@ -2,6 +2,7 @@ package com.test.bu.controller;
 
 import com.test.bu.entity.Driver;
 import com.test.bu.service.interfaces.DriverService;
+import com.test.bu.utils.Utils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -24,13 +25,15 @@ public class DriverController {
     private DriverService driverService;
 
     @GetMapping("/{id}")
-    public String getById(@PathVariable("id") int id, @RequestParam(value = "edit", required = false) boolean edit, Model model) {
+    public String findById(@PathVariable("id") int id, Model model) {
         model.addAttribute("driver", driverService.findById(id));
-        if (edit) {
             return "driverEdit";
-        } else {
-            return "driverShow";
-        }
+    }
+
+    @PostMapping("/update")
+    public String update(@ModelAttribute Driver driver) {
+        driverService.save(driver);
+        return "redirect:/driver/all";
     }
 
     @GetMapping("/all")
@@ -40,7 +43,7 @@ public class DriverController {
                          @RequestParam(value = "order", required = false) String order) {
         int totalPages = 0;
         if (page != null) {
-            size = 10;
+            size = 4;
             Page<Driver> pages = driverService.findAll(page, size, order);
             totalPages = pages.getTotalPages();
             model.addAttribute("total", totalPages);
@@ -61,26 +64,29 @@ public class DriverController {
     }
 
     @GetMapping("/create")
-    public String createPage() {
+    public String createPage(@RequestParam(value = "message", required = false) String message,
+                             Model model) {
+        if (message != null) {
+            model.addAttribute("message", message);
+        }
         return "driverCreateForm";
     }
 
     @PostMapping("/create")
-    public String create(@ModelAttribute Driver driver) {
+    public String createDriver(@ModelAttribute Driver driver, Model model) {
+        List<String> errors = Utils.validate(driver);
+        if (!errors.isEmpty()) {
+            model.addAttribute("errors", errors);
+            return "driverCreateForm";
+        }
         driverService.save(driver);
         return "redirect:all";
-    }
-
-    @PostMapping("/update")
-    public String update(@ModelAttribute Driver driver) {
-        driverService.save(driver);
-        return "redirect:" + driver.getId() + "?edit=false";
     }
 
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") int id) {
         driverService.delete(id);
-        return "redirect:all";
+        return "redirect:/driver/all";
     }
 
 

@@ -80,6 +80,6 @@ public class VehicleController {
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") int id) {
         vehicleService.delete(id);
-        return "redirect:all";
+        return "redirect:/all";
     }
 }

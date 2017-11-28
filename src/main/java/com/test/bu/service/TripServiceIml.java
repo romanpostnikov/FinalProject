@@ -25,9 +25,8 @@ public class TripServiceIml implements TripService {
     TripDao tripDao;
 
     @Override
-    public Trip save(Trip trip) {
+    public void save(Trip trip) {
         tripDao.save(trip);
-        return trip;
     }
 
     @Override

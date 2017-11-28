@@ -1,6 +1,5 @@
 package com.test.bu.config.security;
 
-import com.test.bu.service.interfaces.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -8,16 +7,21 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+import javax.sql.DataSource;
+
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter{
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserService userDetailsService;
+    private DataSource dataSource;
 
     @Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
+        auth.jdbcAuthentication()
+                .usersByUsernameQuery("SELECT username, password FROM user WHERE username = ?")
+                .authoritiesByUsernameQuery("SELECT username, role FROM user WHERE username = ?")
+                .dataSource(dataSource);
     }
 
 
@@ -26,8 +30,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
-                //.antMatchers("/**/all").access("hasRole('USER') and hasRole('ADMIN')")
-                //.antMatchers("/**/**").access("hasRole('ADMIN')")
+        //        .antMatchers("/**").hasRole("USER")
+        //        .antMatchers("/**").hasRole("ADMIN")
+        //        .antMatchers("/**/all").hasRole("USER")
+        //        .antMatchers("/**/all").hasRole("ADMIN")
+        //        .antMatchers("/**/**").hasRole("ADMIN")
                 .and().formLogin()
                 .loginPage("/loginPage").permitAll()
                 .usernameParameter("username")

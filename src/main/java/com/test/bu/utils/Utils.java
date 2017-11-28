@@ -18,4 +18,12 @@ public class Utils {
         }
         return result;
     }
+
+    public static List<String> validate(Driver driver) {
+        List<String> result = new ArrayList<>();
+        if (driver.getName().length() < 4) {
+            result.add("Name too short");
+        }
+        return result;
+    }
 }

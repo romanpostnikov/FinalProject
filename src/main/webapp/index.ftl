@@ -9,10 +9,6 @@
 <#include "WEB-INF/views/header.ftl">
 <div class="container">
 
-<@security.authorize access="isAuthenticated()">
-    <p>Hello, <@security.authentication property="principal.username"/></p>
-</@security.authorize>
-
 </div>
 
 </body>
